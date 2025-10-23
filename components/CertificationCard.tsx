@@ -1,14 +1,16 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React from "react";
+import { Certification } from "../typings";
 import { urlFor } from "../sanity";
-import { Experience } from "../typings";
 
-type Props = { experience: Experience };
+type Props = {
+  certification: Certification;
+};
 
-export default function ExperienceCard({ experience }: Props) {
+export default function CertificationCard({ certification }: Props) {
   // Format date consistently for SSR and client
   const formatDate = (date: Date) => {
     if (!date) return "";
@@ -20,7 +22,7 @@ export default function ExperienceCard({ experience }: Props) {
   };
 
   return (
-    <article className="flex drop-shadow-xl shadow-xl border border-gray-200/50 flex-col rounded-3xl items-center flex-shrink-0 w-[320px] md:w-[550px] xl:w-[650px] h-auto snap-center bg-[#FFFFFF] bg-gradient-to-tr from-white to-darkGreen/20 p-4 md:p-6 hover:opacity-100 opacity-100 cursor-pointer transition-opacity duration-200">
+    <article className="flex drop-shadow-xl flex-col rounded-3xl items-center flex-shrink-0 w-[320px] md:w-[550px] xl:w-[650px] h-auto snap-center bg-[#FFFFFF] bg-gradient-to-tr from-white to-darkGreen/20 p-4 md:p-6 hover:opacity-100 opacity-100 cursor-pointer transition-opacity duration-200">
       <motion.div
         initial={{
           y: -100,
@@ -31,11 +33,11 @@ export default function ExperienceCard({ experience }: Props) {
         viewport={{ once: true }}
         className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover object-center relative shadow-lg mb-4"
       >
-        {experience?.companyImage ? (
+        {certification?.companyImage ? (
           <Image
             className="rounded-full object-cover"
-            src={urlFor(experience.companyImage).url()}
-            alt={experience?.company || "Company"}
+            src={urlFor(certification.companyImage).url()}
+            alt={certification?.company || "Company"}
             fill
             sizes="(max-width: 768px) 128px, (max-width: 1200px) 160px, 160px"
           />
@@ -48,32 +50,32 @@ export default function ExperienceCard({ experience }: Props) {
 
       <div className="w-full px-2 md:px-4">
         <h4 className="text-xl md:text-2xl font-normal text-black text-center mb-3">
-          {experience?.jobTitle}
+          {certification?.title}
         </h4>
         
         <p className="font-bold text-lg md:text-xl text-center text-darkGreen mb-4">
-          {experience?.company}
+          {certification?.company}
         </p>
 
-        {experience?.points && experience.points.length > 0 && (
+        {certification?.description && (
           <p className="text-base md:text-lg text-lightGreen leading-relaxed mb-4">
-            {experience.points[0]}
+            {certification.description}
           </p>
         )}
 
-        <div className="flex flex-wrap gap-3 mb-4 justify-start">
-          {experience?.technologies?.map((technology) => (
-            technology?.image ? (
+        <div className="flex flex-wrap gap-3 mb-4">
+          {certification?.skills?.map((skill) => (
+            skill?.image ? (
               <Image
-                key={technology._id}
+                key={skill._id}
                 className="h-12 w-12 md:h-14 md:w-14 rounded-full object-cover shadow-md"
-                src={urlFor(technology.image).url()}
-                alt={technology?.title || "Technology"}
+                src={urlFor(skill.image).url()}
+                alt={skill?.title || "Skill"}
                 width={56}
                 height={56}
               />
             ) : (
-              <div key={technology._id} className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-gray-600 flex items-center justify-center shadow-md">
+              <div key={skill._id} className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-gray-600 flex items-center justify-center shadow-md">
                 <span className="text-sm">💻</span>
               </div>
             )
@@ -81,11 +83,22 @@ export default function ExperienceCard({ experience }: Props) {
         </div>
 
         <p className="uppercase text-gray-500 text-sm md:text-base font-medium mb-4">
-          {formatDate(experience?.dateStarted)} -{" "}
-          {experience.isCurrentlyWorkingHere
-            ? "Present"
-            : formatDate(experience?.dateEnded)}
+          {formatDate(certification?.dateIssued)} -{" "}
+          {certification?.doesNotExpire
+            ? "No Expiration"
+            : formatDate(certification?.dateExpired)}
         </p>
+
+        {certification?.certificateUrl && (
+          <a
+            href={certification.certificateUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-center text-darkGreen hover:text-lightGreen transition-colors font-semibold text-sm md:text-base"
+          >
+            View Certificate →
+          </a>
+        )}
       </div>
     </article>
   );

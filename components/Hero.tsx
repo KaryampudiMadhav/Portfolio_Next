@@ -51,7 +51,7 @@ export default function Hero({ pageInfo }: Props) {
           <Cursor cursorColor="#68B2A0" />
         </h1>
 
-        <div className="pt-5">
+        <div className="z-20 heroButtons flex flex-wrap gap-3 md:gap-5 justify-center">
           <Link href="#about">
             <button className="heroButton">About</button>
           </Link>
@@ -63,6 +63,9 @@ export default function Hero({ pageInfo }: Props) {
           </Link>
           <Link href="#projects">
             <button className="heroButton">Projects</button>
+          </Link>
+          <Link href="#certifications">
+            <button className="heroButton">Certifications</button>
           </Link>
         </div>
       </div>

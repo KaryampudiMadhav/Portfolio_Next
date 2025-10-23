@@ -13,14 +13,16 @@ export default function WorkExperience({ experiences }: Props) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen  flex relative overflow-hidden flex-col text-left md:flex-row max-w-full px-10 justify-evenly mx-auto items-center"
+      className="h-screen flex relative overflow-hidden flex-col text-left max-w-full justify-center mx-auto items-center pt-20 px-5"
     >
-      <h3 className="absolute top-20 md:top-24 uppercase tracking-[20px] text-gray-500 text-xl md:text-2xl">
-        Experience
-      </h3>
+      <div className="absolute top-16 md:top-20 w-full flex justify-center z-20 mb-10">
+        <h3 className="uppercase tracking-[20px] text-gray-500 text-xl md:text-2xl">
+          Experience
+        </h3>
+      </div>
 
-      {/* Experience cards */}
-      <div className="w-screen h-3/4 md:h-2/3 md:w-full text-left pb-5 md:pb-10 flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-darkGreen/80">
+      {/* Experience cards - Two columns side by side */}
+      <div className="w-screen md:w-full text-left flex flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-5 overflow-x-visible overflow-y-visible py-8 px-10 justify-center items-center mt-10">
         {experiences
           ?.slice() // make a shallow copy so we don't mutate the original array
           .sort(

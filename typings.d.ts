@@ -67,3 +67,16 @@ export interface Social extends SanityBody {
     title: string;
     url: string;
 }
+
+export interface Certification extends SanityBody {
+    _type: 'certification';
+    title: string;
+    company: string;
+    companyImage: Image;
+    certificateUrl: string;
+    dateIssued: Date;
+    dateExpired: Date;
+    doesNotExpire: boolean;
+    skills: Skill[];
+    description: string;
+}

@@ -39,6 +39,7 @@ export default function Projects({ projects }: Props) {
                   src={urlFor(project.image).url()}
                   alt={project?.title || "Project image"}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
                 />
               ) : (
                 <div className="w-full h-full bg-gray-700 flex items-center justify-center rounded-lg">

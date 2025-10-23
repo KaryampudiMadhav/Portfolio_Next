@@ -10,6 +10,7 @@ import skill from './skill'
 import social from './social'
 import experience from './experience'
 import project from './project'
+import certification from './certification'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -24,6 +25,7 @@ export default createSchema({
     skill, 
     experience,
     social,
-    project
+    project,
+    certification
   ]),
 })

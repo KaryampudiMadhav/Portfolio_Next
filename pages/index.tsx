@@ -4,17 +4,19 @@ import Image from "next/image";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import styles from "../styles/Home.module.css";
-import { Experience, PageInfo, Skill, Project, Social } from "../typings";
+import { Experience, PageInfo, Skill, Project, Social, Certification } from "../typings";
 import { fetchPageInfo } from "../utils/fetchPageInfo";
 import { fetchExperiences } from "../utils/fetchExperience";
 import { fetchProjects } from "../utils/fetchProjects";
 import { fetchSkills } from "../utils/fetchSkills";
 import { fetchSocials } from "../utils/fetchSocials";
+import { fetchCertifications } from "../utils/fetchCertifications";
 import About from "../components/About";
 import WorkExperience from "../components/WorkExperience";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import ContactMe from "../components/ContactMe";
+import Certifications from "../components/Certifications";
 import Link from "next/link";
 import { HomeIcon } from "@heroicons/react/24/solid";
 import Script from "next/script";
@@ -26,9 +28,10 @@ type Props = {
   skills: Skill[];
   projects: Project[];
   socials: Social[];
+  certifications: Certification[];
 };
 
-const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
+const Home = ({ pageInfo, experiences, projects, skills, socials, certifications }: Props) => {
   // Get profile picture URL from Sanity for favicon
   const getFaviconUrl = () => {
     if (pageInfo?.profilePic) {
@@ -101,14 +104,19 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
         <WorkExperience experiences={experiences} />
       </section>
 
+      {/* Projects */}
+      <section id="projects" className="snap-start mb-20">
+        <Projects projects={projects} />
+      </section>
+
       {/* Skills */}
       <section id="skills" className="snap-start">
         <Skills skills={skills} />
       </section>
 
-      {/* Projects */}
-      <section id="projects" className="snap-start">
-        <Projects projects={projects} />
+      {/* Certifications */}
+      <section id="certifications" className="snap-center">
+        <Certifications certifications={certifications} />
       </section>
 
       {/* Contact */}
@@ -137,6 +145,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const skills = await fetchSkills();
   const projects = await fetchProjects();
   const socials = await fetchSocials();
+  const certifications = await fetchCertifications();
 
   return {
     props: {
@@ -145,6 +154,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       skills,
       projects,
       socials,
+      certifications,
     },
     revalidate: 10,
   };
