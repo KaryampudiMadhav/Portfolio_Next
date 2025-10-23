@@ -21,29 +21,26 @@ export default function ContactMe({}: Props) {
 
   return (
     <div className="h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center">
-      <h3 className="absolute top-20 md:top-24 uppercase tracking-[20px] text-gray-500 text-xl md:text-2xl">
-        Contact
-      </h3>
-      <div className="flex flex-col space-y-6 md:space-y-8 w-full max-w-2xl">
-        <h4 className="text-xl md:text-2xl lg:text-3xl 2xl:text-4xl font-semibold text-center">
+      <div className="flex flex-col space-y-6 md:space-y-10 w-full max-w-2xl mt-10 md:mt-0">
+        <h4 className="text-xl md:text-2xl lg:text-3xl 2xl:text-4xl font-semibold text-center leading-relaxed">
           I have got just what you need.{" "}
           <span className="decoration-darkGreen/50 underline">Lets talk.</span>
         </h4>
 
-        <div className="space-y-3 md:space-y-4">
+        <div className="space-y-5 md:space-y-6">
           <div className="flex items-center space-x-5 justify-center">
             <PhoneIcon className="text-darkGreen h-7 w-7 animate-pulse" />
-            <p className="text-lg md:text-2xl lg:text-2xl">+91 7416718982</p>
+            <p className="text-base md:text-xl lg:text-xl tracking-wide">+91 7416718982</p>
           </div>
           <div className="flex items-center space-x-5 justify-center">
             <EnvelopeIcon className="text-darkGreen h-7 w-7 animate-pulse" />
-            <p className="text-lg md:text-2xl lg:text-2xl">
+            <p className="text-base md:text-xl lg:text-xl tracking-wide">
               karyampudimadhav@gmail.com
             </p>
           </div>
           <div className="flex items-center space-x-5 justify-center">
             <MapPinIcon className="text-darkGreen h-7 w-7 animate-pulse" />
-            <p className="text-lg md:text-2xl lg:text-2xl">
+            <p className="text-base md:text-xl lg:text-xl tracking-wide">
               Andhra Pradesh, India
             </p>
           </div>
