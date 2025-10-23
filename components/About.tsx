@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import React from "react";
 import { urlFor } from "../sanity";
@@ -17,22 +19,42 @@ export default function About({ pageInfo }: Props) {
         About
       </h3>
 
-      <motion.img
-        initial={{
-          x: -200,
-          opacity: 0,
-        }}
-        transition={{
-          duration: 1.2,
-        }}
-        whileInView={{
-          x: 0,
-          opacity: 1,
-        }}
-        viewport={{ once: true }}
-        className=" -mb-24 md:mb-0 flex-shrink-0 w-52 h-52 rounded-full object-cover md:rounded-lg md:w-64 md:h-95 xl:w-[500px] xl:h-[600px]"
-        src={urlFor(pageInfo?.profilePic).url()}
-      />
+      {pageInfo?.profilePic ? (
+        <motion.img
+          initial={{
+            x: -200,
+            opacity: 0,
+          }}
+          transition={{
+            duration: 1.2,
+          }}
+          whileInView={{
+            x: 0,
+            opacity: 1,
+          }}
+          viewport={{ once: true }}
+          className=" -mb-24 md:mb-0 flex-shrink-0 w-52 h-52 rounded-full object-cover md:rounded-lg md:w-64 md:h-95 xl:w-[500px] xl:h-[600px]"
+          src={urlFor(pageInfo.profilePic).url()}
+        />
+      ) : (
+        <motion.div
+          initial={{
+            x: -200,
+            opacity: 0,
+          }}
+          transition={{
+            duration: 1.2,
+          }}
+          whileInView={{
+            x: 0,
+            opacity: 1,
+          }}
+          viewport={{ once: true }}
+          className=" -mb-24 md:mb-0 flex-shrink-0 w-52 h-52 rounded-full bg-gray-700 flex items-center justify-center md:rounded-lg md:w-64 md:h-95 xl:w-[500px] xl:h-[600px]"
+        >
+          <span className="text-6xl text-gray-400">📸</span>
+        </motion.div>
+      )}
       <div className="space-y-5 md:space-y-10 px-0 md:px-10">
         <h4 className="text-xl md:text-4xl font-semibold">
           Here is a{" "}

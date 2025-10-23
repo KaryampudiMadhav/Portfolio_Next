@@ -18,6 +18,7 @@ import ContactMe from "../components/ContactMe";
 import Link from "next/link";
 import { HomeIcon } from "@heroicons/react/24/solid";
 import Script from "next/script";
+import { urlFor } from "../sanity";
 
 type Props = {
   pageInfo: PageInfo;
@@ -28,6 +29,20 @@ type Props = {
 };
 
 const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
+  // Get profile picture URL from Sanity for favicon
+  const getFaviconUrl = () => {
+    if (pageInfo?.profilePic) {
+      try {
+        return urlFor(pageInfo.profilePic).width(180).height(180).url();
+      } catch {
+        return "/favicon-32x32.png";
+      }
+    }
+    return "/favicon-32x32.png";
+  };
+
+  const faviconUrl = getFaviconUrl();
+
   return (
     <div
       className="bg-lightBackground text-darkBlack h-screen snap-y snap-mandatory
@@ -37,22 +52,22 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/apple-touch-icon.png"
+          href={faviconUrl}
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/favicon-32x32.png"
+          href={faviconUrl}
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/favicon-16x16.png"
+          href={faviconUrl}
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <title>{"Mitch's Portfolio"}</title>
+        <title>{pageInfo?.name ? `${pageInfo.name}'s Portfolio` : "Madhav Karyampudi's Portfolio"}</title>
       </Head>
 
       {/* Google Analytics */}

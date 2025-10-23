@@ -27,9 +27,12 @@
     "react-dom": "^17.0",
     "styled-components": "^5.2.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git@github.com:MitchellSparrow/portfolioWebsite.git"
+  },
+  "optionalDependencies": {
+    "@esbuild/win32-x64": "^0.25.11",
+    "esbuild": "^0.25.11"
   }
 }
