@@ -16,7 +16,7 @@ export default function About({ pageInfo }: Props) {
       className="flex flex-col relative h-screen text-center md:text-left max-w-7xl px-10 justify-center mx-auto items-center"
     >
       <div className="w-full flex flex-col items-center mb-8 md:mb-10">
-        <h3 className="uppercase tracking-[20px] text-gray-500 text-xl md:text-2xl text-center">
+        <h3 className="uppercase tracking-[20px] text-gray-500 dark:text-gray-400 text-xl md:text-2xl text-center">
           About
         </h3>
       </div>
@@ -59,12 +59,12 @@ export default function About({ pageInfo }: Props) {
           </motion.div>
         )}
         <div className="space-y-5 md:space-y-10 px-0 md:px-10">
-          <h4 className="text-xl md:text-4xl font-semibold">
+          <h4 className="text-xl md:text-4xl font-semibold text-gray-900 dark:text-white">
             Here is a{" "}
             <span className=" underline decoration-darkGreen/50">little</span>{" "}
             background
           </h4>
-          <p className="text-sm md:text-lg lg:text-lg text-justify">
+          <p className="text-sm md:text-lg lg:text-lg text-justify text-gray-700 dark:text-gray-300">
             {pageInfo?.backgroundInformation}
           </p>
         </div>

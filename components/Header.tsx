@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import { SocialIcon } from "react-social-icons";
 import { Social } from "../typings";
+import ThemeToggle from "./ThemeToggle";
 
 type Props = {
   socials: Social[];
@@ -35,6 +36,7 @@ export default function Header({ socials }: Props) {
             url={social.url}
             fgColor="gray"
             bgColor="transparent"
+            className="hover:opacity-70 transition-opacity"
           />
         ))}
       </motion.div>
@@ -56,12 +58,12 @@ export default function Header({ socials }: Props) {
           transition={{
             duration: 1.5,
           }}
-          className="flex flex-row items-center text-gray-300 cursor-pointer hover:text-lightGreen transition-colors"
+          className="flex flex-row items-center text-gray-400 dark:text-gray-300 cursor-pointer hover:text-lightGreen dark:hover:text-lightGreen transition-colors"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 md:w-7 md:h-7">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
           </svg>
-          <p className="uppercase hidden md:inline-flex text-sm text-gray-400 ml-1">
+          <p className="uppercase hidden md:inline-flex text-sm text-gray-400 dark:text-gray-300 ml-1">
             Resume
           </p>
         </motion.a>
@@ -82,7 +84,7 @@ export default function Header({ socials }: Props) {
             duration: 1.5,
             delay: 0.1,
           }}
-          className="flex flex-row items-center text-gray-300 cursor-pointer"
+          className="flex flex-row items-center text-gray-400 dark:text-gray-300 cursor-pointer"
         >
           <SocialIcon
             className="cursor-pointer"
@@ -92,10 +94,12 @@ export default function Header({ socials }: Props) {
             style={{ height: 40, width: 40 }}
             as="div"
           />
-          <p className="uppercase hidden md:inline-flex text-sm text-gray-400">
+          <p className="uppercase hidden md:inline-flex text-sm text-gray-400 dark:text-gray-300">
             Get in touch
           </p>
         </motion.a>
+
+        <ThemeToggle />
       </div>
     </header>
   );

@@ -48,8 +48,8 @@ const Home = ({ pageInfo, experiences, projects, skills, socials, certifications
 
   return (
     <div
-      className="bg-lightBackground text-darkBlack h-screen snap-y snap-mandatory
-    overflow-y-scroll overflow-x-hidden z-0 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-darkGreen/80"
+      className="bg-lightBackground dark:bg-[rgb(36,36,36)] text-darkBlack dark:text-gray-100 h-screen snap-y snap-mandatory
+    overflow-y-scroll overflow-x-hidden z-0 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-darkGreen/80 transition-colors duration-300"
     >
       <Head>
         <link
