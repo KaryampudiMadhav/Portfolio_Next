@@ -6,7 +6,7 @@
 ![Sanity CMS](https://img.shields.io/badge/Sanity-CMS-f03e2f?style=for-the-badge&logo=sanity)
 
 A modern, fully responsive portfolio website built with **Next.js 14**, **TypeScript**, **Tailwind CSS**, and **Sanity CMS**. Features smooth animations, dynamic content management, and optimized performance.
-
+check my portfolio https://portfolio-next-7cmd03mrl-karyampudimadhav-2850s-projects.vercel.app/
 ## 📋 Table of Contents
 
 - [Features](#-features)
