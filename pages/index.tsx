@@ -20,7 +20,8 @@ import Certifications from "../components/Certifications";
 import Link from "next/link";
 import { HomeIcon } from "@heroicons/react/24/solid";
 import Script from "next/script";
-import { urlFor } from "../sanity";
+import { urlFor, sanityClient } from "../sanity";
+import { groq } from "next-sanity";
 
 type Props = {
   pageInfo: PageInfo;
@@ -140,22 +141,46 @@ const Home = ({ pageInfo, experiences, projects, skills, socials, certifications
 export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const pageInfo = await fetchPageInfo();
-  const experiences = await fetchExperiences();
-  const skills = await fetchSkills();
-  const projects = await fetchProjects();
-  const socials = await fetchSocials();
-  const certifications = await fetchCertifications();
+  try {
+    // Fetch directly from Sanity during build time
+    const pageInfoQuery = groq`*[_type == 'pageInfo'][0]`;
+    const experienceQuery = groq`*[_type == 'experience'] { ..., technologies[]-> } | order(_createdAt desc)`;
+    const skillsQuery = groq`*[_type == 'skill']`;
+    const projectsQuery = groq`*[_type == 'project'] { ..., technologies[]-> } | order(_createdAt desc)`;
+    const socialsQuery = groq`*[_type == 'social']`;
+    const certificationsQuery = groq`*[_type == 'certification'] | order(_createdAt desc)`;
 
-  return {
-    props: {
-      pageInfo,
-      experiences,
-      skills,
-      projects,
-      socials,
-      certifications,
-    },
-    revalidate: 10,
-  };
+    const pageInfo: PageInfo = await sanityClient.fetch(pageInfoQuery);
+    const experiences: Experience[] = await sanityClient.fetch(experienceQuery);
+    const skills: Skill[] = await sanityClient.fetch(skillsQuery);
+    const projects: Project[] = await sanityClient.fetch(projectsQuery);
+    const socials: Social[] = await sanityClient.fetch(socialsQuery);
+    const certifications: Certification[] = await sanityClient.fetch(certificationsQuery);
+
+    return {
+      props: {
+        pageInfo,
+        experiences,
+        skills,
+        projects,
+        socials,
+        certifications,
+      },
+      revalidate: 10,
+    };
+  } catch (error) {
+    console.error('Error fetching data from Sanity:', error);
+    // Return empty data as fallback
+    return {
+      props: {
+        pageInfo: {} as PageInfo,
+        experiences: [],
+        skills: [],
+        projects: [],
+        socials: [],
+        certifications: [],
+      },
+      revalidate: 10,
+    };
+  }
 };

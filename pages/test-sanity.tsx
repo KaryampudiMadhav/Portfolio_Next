@@ -164,7 +164,7 @@ export default function TestSanity({ pageInfo, skills, projects, experiences, so
           <ol className="list-decimal list-inside space-y-2 text-sm">
             <li>Open Sanity Studio: <a href="http://localhost:3333" target="_blank" className="text-blue-500 underline">http://localhost:3333</a></li>
             <li>Add or edit your content in each section</li>
-            <li><strong>IMPORTANT:</strong> Click the green "PUBLISH" button (not just "Save")</li>
+            <li><strong>IMPORTANT:</strong> Click the green &quot;PUBLISH&quot; button (not just &quot;Save&quot;)</li>
             <li>Refresh this page to see your updates</li>
             <li>Once you see your data here, go to your main portfolio: <a href="http://localhost:3000" target="_blank" className="text-blue-500 underline">http://localhost:3000</a></li>
           </ol>
