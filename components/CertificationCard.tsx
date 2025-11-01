@@ -22,7 +22,7 @@ export default function CertificationCard({ certification }: Props) {
   };
 
   return (
-    <article className="flex drop-shadow-xl flex-col rounded-3xl items-center flex-shrink-0 w-[320px] md:w-[550px] xl:w-[650px] h-auto snap-center bg-[#FFFFFF] bg-gradient-to-tr from-white to-darkGreen/20 p-4 md:p-6 hover:opacity-100 opacity-100 cursor-pointer transition-opacity duration-200">
+    <article className="flex drop-shadow-xl flex-col rounded-3xl items-center flex-shrink-0 w-full max-w-[320px] md:max-w-[550px] xl:max-w-[650px] h-auto snap-center bg-[#FFFFFF] dark:bg-gray-800 bg-gradient-to-tr from-white to-darkGreen/20 dark:from-gray-800 dark:to-darkGreen/30 p-4 md:p-6 hover:opacity-100 opacity-100 cursor-pointer transition-opacity duration-200">
       <motion.div
         initial={{
           y: -100,

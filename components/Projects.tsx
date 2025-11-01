@@ -16,13 +16,13 @@ export default function Projects({ projects }: Props) {
       transition={{ duration: 1.5 }}
       className="min-h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-start mx-auto items-center z-0 pt-12 md:pt-16"
     >
-      {/* Moved heading slightly higher */}
-      <h3 className="absolute top-3 md:top-10 uppercase tracking-[20px] text-gray-500 dark:text-gray-400 text-2xl md:text-3xl z-30 left-1/2 transform -translate-x-1/2 font-semibold">
+      {/* Centered heading with better positioning */}
+      <h3 className="absolute top-16 md:top-20 uppercase tracking-[10px] sm:tracking-[15px] md:tracking-[20px] text-gray-500 dark:text-gray-400 text-xl md:text-2xl z-30 left-1/2 transform -translate-x-1/2 font-semibold">
         Projects
       </h3>
 
       {/* Reduced extra padding to bring content closer */}
-      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-darkGreen/80 pt-20 md:pt-24">
+      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-darkGreen/80 pt-28 md:pt-32">
         {projects?.map((project, i) => (
           <div
             key={project._id}

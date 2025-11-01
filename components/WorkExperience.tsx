@@ -13,16 +13,14 @@ export default function WorkExperience({ experiences }: Props) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen flex relative overflow-hidden flex-col text-left max-w-full justify-center mx-auto items-center pt-20 px-5"
+      className="min-h-screen flex relative overflow-hidden flex-col text-left max-w-full justify-start mx-auto items-center py-20 px-4 md:px-10"
     >
-      <div className="absolute top-16 md:top-20 w-full flex justify-center z-20 mb-10">
-        <h3 className="uppercase tracking-[20px] text-gray-500 text-xl md:text-2xl">
-          Experience
-        </h3>
-      </div>
+      <h3 className="uppercase tracking-[8px] sm:tracking-[12px] md:tracking-[20px] text-gray-500 dark:text-gray-400 text-lg sm:text-xl md:text-2xl mb-16 md:mb-20 text-center">
+        Experience
+      </h3>
 
-      {/* Experience cards - Two columns side by side */}
-      <div className="w-screen md:w-full text-left flex flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-5 overflow-x-visible overflow-y-visible py-8 px-10 justify-center items-center mt-10">
+      {/* Experience cards - Scrollable on mobile, side by side on desktop */}
+      <div className="w-full max-w-7xl flex flex-col md:flex-row gap-6 md:gap-8 overflow-x-auto md:overflow-x-visible overflow-y-visible justify-center items-stretch snap-x snap-mandatory md:snap-none scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-darkGreen/80 pb-10">
         {experiences
           ?.slice() // make a shallow copy so we don't mutate the original array
           .sort(

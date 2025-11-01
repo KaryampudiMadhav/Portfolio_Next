@@ -24,21 +24,19 @@ export default function Certifications({ certifications }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="h-screen flex relative overflow-hidden flex-col text-left md:flex-row max-w-full justify-center mx-auto items-center pt-20"
+      className="min-h-screen relative flex overflow-hidden flex-col text-left max-w-full justify-start mx-auto items-center px-4 md:px-10 py-20"
     >
-      <div className="absolute top-16 md:top-20 w-full flex justify-center z-20 mb-10">
-        <h3 className="uppercase tracking-[20px] text-gray-500 text-xl md:text-2xl">
-          Certifications
-        </h3>
-      </div>
+      <h3 className="uppercase tracking-[8px] sm:tracking-[12px] md:tracking-[20px] text-gray-500 dark:text-gray-400 text-lg sm:text-xl md:text-2xl mb-16 md:mb-20 text-center">
+        Certifications
+      </h3>
 
       {/* Left Arrow */}
       {certifications && certifications.length > 1 && (
         <button
           onClick={() => scroll('left')}
-          className="absolute left-2 md:left-5 z-30 bg-darkGreen/30 hover:bg-darkGreen/60 text-white p-2 md:p-3 rounded-full transition-all duration-300 opacity-50 hover:opacity-100"
+          className="absolute left-2 md:left-5 top-1/2 transform -translate-y-1/2 z-30 bg-darkGreen/30 hover:bg-darkGreen/60 text-white p-2 md:p-3 rounded-full transition-all duration-300 opacity-50 hover:opacity-100"
           aria-label="Previous certification"
         >
           <ChevronLeftIcon className="h-6 w-6 md:h-8 md:w-8" />
@@ -48,7 +46,7 @@ export default function Certifications({ certifications }: Props) {
       {/* Certification cards */}
       <div 
         ref={scrollRef}
-        className="w-full text-left flex space-x-5 overflow-x-scroll overflow-y-visible py-8 px-10 md:px-20 snap-x snap-mandatory scrollbar-hide items-center mt-10"
+        className="w-full max-w-7xl text-left flex gap-6 md:gap-8 overflow-x-scroll overflow-y-visible px-4 md:px-10 snap-x snap-mandatory scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-darkGreen/80 items-center pb-10"
       >
         {certifications
           ?.slice()
@@ -66,7 +64,7 @@ export default function Certifications({ certifications }: Props) {
       {certifications && certifications.length > 1 && (
         <button
           onClick={() => scroll('right')}
-          className="absolute right-2 md:right-5 z-30 bg-darkGreen/30 hover:bg-darkGreen/60 text-white p-2 md:p-3 rounded-full transition-all duration-300 opacity-50 hover:opacity-100"
+          className="absolute right-2 md:right-5 top-1/2 transform -translate-y-1/2 z-30 bg-darkGreen/30 hover:bg-darkGreen/60 text-white p-2 md:p-3 rounded-full transition-all duration-300 opacity-50 hover:opacity-100"
           aria-label="Next certification"
         >
           <ChevronRightIcon className="h-6 w-6 md:h-8 md:w-8" />
