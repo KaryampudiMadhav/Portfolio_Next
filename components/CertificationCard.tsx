@@ -63,23 +63,32 @@ export default function CertificationCard({ certification }: Props) {
           </p>
         )}
 
-        <div className="flex flex-wrap gap-3 mb-4">
-          {certification?.skills?.map((skill) => (
-            skill?.image ? (
-              <Image
-                key={skill._id}
-                className="h-12 w-12 md:h-14 md:w-14 rounded-full object-cover shadow-md"
-                src={urlFor(skill.image).url()}
-                alt={skill?.title || "Skill"}
-                width={56}
-                height={56}
-              />
-            ) : (
-              <div key={skill._id} className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-gray-600 flex items-center justify-center shadow-md">
+        <div className="flex flex-wrap gap-3 mb-4 justify-start">
+          {certification?.skills?.map((skill) => {
+            try {
+              if (skill?.image?.asset?._ref) {
+                const imageUrl = urlFor(skill.image).url();
+                return (
+                  <div key={skill._id} className="relative h-12 w-12 md:h-14 md:w-14">
+                    <Image
+                      className="rounded-full object-cover shadow-md"
+                      src={imageUrl}
+                      alt={skill?.title || "Skill"}
+                      fill
+                      sizes="(max-width: 768px) 48px, 56px"
+                    />
+                  </div>
+                );
+              }
+            } catch (error) {
+              console.error('Error loading skill image:', error);
+            }
+            return (
+              <div key={skill._id} className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-gray-600 dark:bg-gray-700 flex items-center justify-center shadow-md">
                 <span className="text-sm">💻</span>
               </div>
-            )
-          ))}
+            );
+          })}
         </div>
 
         <p className="uppercase text-gray-500 text-sm md:text-base font-medium mb-4">

@@ -148,7 +148,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     const skillsQuery = groq`*[_type == 'skill']`;
     const projectsQuery = groq`*[_type == 'project'] { ..., technologies[]-> } | order(_createdAt desc)`;
     const socialsQuery = groq`*[_type == 'social']`;
-    const certificationsQuery = groq`*[_type == 'certification'] | order(_createdAt desc)`;
+    const certificationsQuery = groq`*[_type == 'certification'] { ..., skills[]-> } | order(_createdAt desc)`;
 
     const pageInfo: PageInfo = await sanityClient.fetch(pageInfoQuery);
     const experiences: Experience[] = await sanityClient.fetch(experienceQuery);
